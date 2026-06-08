@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ModelViewer from "@/components/three/LazyViewer";
+import InView from "@/components/three/InView";
 import { products, whatsappUrl } from "@/lib/site";
 
 export default function Products() {
@@ -46,11 +47,12 @@ export default function Products() {
         <div className="mt-8 grid gap-6 lg:grid-cols-2 lg:items-stretch">
           {/* Canvas */}
           <div className="relative h-[320px] overflow-hidden rounded-3xl bg-gradient-to-b from-white to-mist ring-1 ring-navy/10 sm:h-[400px]">
-            <ModelViewer
-              key={product.id}
-              productId={product.id}
-              className="h-full w-full [&_canvas]:cursor-grab [&_canvas]:active:cursor-grabbing"
-            />
+            <InView className="h-full w-full">
+              <ModelViewer
+                productId={product.id}
+                className="h-full w-full [&_canvas]:cursor-grab [&_canvas]:active:cursor-grabbing"
+              />
+            </InView>
             <span className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-navy/5 px-3 py-1 text-[11px] text-navy/45">
               arraste para girar
             </span>
